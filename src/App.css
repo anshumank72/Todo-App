@@ -1,11 +1,38 @@
 body {
-  background-color: rgba(48, 128, 194, 0.795);
-  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: rgb(235, 210, 210);
 }
-
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  /* background-color: gray; */
+  background-image: url(./photo-1514782831304-632d84503f6f.jfif);
+  background-position: center;
+
+  min-height: 600px;
+  width: 500px;
+  margin: 40px auto;
+}
+.toDoForm input {
+  background-color: rgb(209, 222, 226);
+  border: 0;
+  width: 200px;
+  height: 50px;
+  padding: 0 20px;
+  margin: 20px 53px;
+  font-size: 18px;
+  border-radius: 10px;
+  color: #fff;
+}
+.toDoForm input::placeholder {
+  color: lightslategray;
+}
+.toDoForm input:focus {
+  outline: none;
+}
+.toDoForm button {
+  height: 50px;
+  width: 80px;
+  border-radius: 5px;
+  border: 0;
+  background-color: rgb(188, 219, 219);
+  cursor: pointer;
+  outline: none;
 }

@@ -1,51 +1,86 @@
 import React, { Component } from "react";
-import "./App.css";
-import TaskIndicator from "./TaskIndicator/TaskIndicator";
-import TodoList from "./TodoList/TodoList";
-import InputForm from "./InputForm/InputForm";
+import classes from "./App.css";
+import ListItems from "./ListItems/ListItems";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lists: [{ task: "", id: "" }],
-      input: "",
+      items: [],
+      currentItem: {
+        text: "",
+        key: "",
+      },
     };
   }
-  changeHandler = (e) => {
-    this.setState({ input: e.target.value });
-  };
-
-  submitHandler = (e) => {
-    let list;
-    e.preventDefault();
-    if (this.state.input === "") {
-      return;
-    } else {
-      list = { task: this.state.input, id: this.state.lists.length + 1 };
-    }
-    this.setState({ lists: [...this.state.lists, list], index: "" });
-    document.getElementById("myform").reset();
-  };
-
-  deleteHandler = (index) => {
-    const filteredList = this.state.lists.filter((list) => {
-      return list.id !== index;
+  handleInput = (e) => {
+    this.setState({
+      currentItem: {
+        text: e.target.value,
+        key: Date.now(),
+      },
     });
-    this.setState({ lists: filteredList });
   };
+  addItem = (e) => {
+    e.preventDefault();
+    const newItem = this.state.currentItem;
+    console.log(newItem);
+    if (newItem.text !== "") {
+      const newItems = [...this.state.items, newItem];
+      // const newItems = this.state.items.concat(newItem);
+      console.log(newItems);
+
+      this.setState({
+        items: newItems,
+        currentItem: {
+          text: "",
+          key: "",
+        },
+      });
+    }
+  };
+
+  deleteItem = (key) => {
+    const filteredItems = this.state.items.filter((item) => item.key !== key);
+
+    this.setState({ items: filteredItems });
+  };
+
+  setUpdate = (text, key) => {
+    const items = this.state.items;
+    items.map((item) => {
+      if (item.key === key) {
+        item.text = text;
+      }
+    });
+    this.setState({
+      items: items,
+    });
+  };
+
   render() {
+    // console.log(this.state.completeItem, "val");
     return (
-      <div className="App">
-        <InputForm
-          onChange={this.changeHandler}
-          onSubmit={this.submitHandler}
+      <div className={classes.App}>
+        <header>
+          <form className={classes.toDoForm} onSubmit={this.addItem}>
+            <input
+              type="text"
+              placeholder="Add a to-do..."
+              value={this.state.currentItem.text}
+              onChange={this.handleInput}
+            />
+
+            <button type="submit">Add</button>
+          </form>
+        </header>
+        <ListItems
+          items={this.state.items}
+          deleteItem={this.deleteItem}
+          setUpdate={this.setUpdate}
         />
-        <TodoList lists={this.state.lists} onDelete={this.deleteHandler} />
-        <TaskIndicator number={this.state.lists.length} />
       </div>
     );
   }
 }
-
 export default App;
