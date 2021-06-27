@@ -16,10 +16,10 @@ body {
   width: 200px;
   height: 50px;
   padding: 0 20px;
-  margin: 20px 53px;
+  margin: 20px 40px 20px 55px;
   font-size: 18px;
   border-radius: 10px;
-  color: #fff;
+  color: rgb(110, 97, 97);
 }
 .toDoForm input::placeholder {
   color: lightslategray;
@@ -32,7 +32,7 @@ body {
   width: 80px;
   border-radius: 5px;
   border: 0;
-  background-color: rgb(188, 219, 219);
+  background-color: rgb(101, 93, 182);
   cursor: pointer;
   outline: none;
 }

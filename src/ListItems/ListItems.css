@@ -1,8 +1,8 @@
 .list {
-  color: #fff;
+  color: black;
   width: 300px;
   background-color: rgb(209, 222, 226);
-  height: 50px;
+
   margin: 20px auto;
   border-radius: 5px;
 }
@@ -23,14 +23,15 @@
   width: 50px;
   border-radius: 5px;
   border: 0;
-  background-color: rgb(188, 219, 219);
+  background-color: rgb(101, 93, 182);
   cursor: pointer;
   outline: none;
+  margin: 0 auto;
 }
 .list p input {
   background-color: transparent;
   border: 0;
-  color: #fff;
+  color: rgb(110, 97, 97);
   font-size: 18px;
   outline: none;
 }

@@ -3,16 +3,14 @@ import classes from "./App.css";
 import ListItems from "./ListItems/ListItems";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      currentItem: {
-        text: "",
-        key: "",
-      },
-    };
-  }
+  state = {
+    items: [],
+    currentItem: {
+      text: "",
+      key: "",
+    },
+    checked: false,
+  };
   handleInput = (e) => {
     this.setState({
       currentItem: {
@@ -83,4 +81,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
